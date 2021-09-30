@@ -1,0 +1,36 @@
+syntax = "proto3";
+package addressbook;
+
+option go_package = "server/addressbook";
+
+message Person {
+	string name = 1;
+	int32 id = 2;
+	string email = 3;
+
+	enum PhoneType {
+		MOBILE = 0;
+		HOME = 1;
+		WORK = 2;
+	}
+
+	message PhoneNumber {
+		string number = 1;
+		PhoneType type = 2;
+	}
+
+	repeated PhoneNumber phones = 4;
+}
+
+service AddressBookService {
+	rpc ListPersons(ListPersonsRequest) returns (ListPersonsResponse);
+	rpc AddPerson(Person) returns (AddPersonResponse);
+}
+
+message ListPersonsRequest {}
+
+message ListPersonsResponse {
+	repeated Person person = 1;
+}
+
+message AddPersonResponse {}
