@@ -2,4 +2,5 @@
 *.pb.go
 .DS_Store
 .idea
+target
 
