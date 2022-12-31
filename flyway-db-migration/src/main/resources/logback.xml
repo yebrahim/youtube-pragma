@@ -1,0 +1,33 @@
+<configuration>
+
+  <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>
+        [%level] %class{0}:%L - %msg%n
+      </Pattern>
+    </layout>
+  </appender>
+
+  <appender name="FLYWAY" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>
+        [FLYWAY] %msg%n
+      </Pattern>
+    </layout>
+  </appender>
+
+  <logger name="github.yebrahim" level="debug" additivity="false">
+    <appender-ref ref="CONSOLE"/>
+  </logger>
+
+  <logger name="org.flywaydb" level="info" additivity="false">
+    <appender-ref ref="FLYWAY"/>
+  </logger>
+
+  <root level="error">
+    <appender-ref ref="CONSOLE"/>
+  </root>
+
+</configuration>
